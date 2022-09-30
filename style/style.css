@@ -40,13 +40,19 @@ body {
   font-weight: bold;
   margin-top: 40px;
   border-radius: 10px;
+  
   }
+
+.boton:active{
+    background-color: azure;
+    box-shadow: 0 5px #666;
+    transform: translateX(2px);
+}
 
   .cartel{
     width:200px ;
     height: 300px;
-    border: 5px  solid black ;
-    
+    border: 8px  solid black ;
   }
 
 #pantalla-media, #pantalla-final {
