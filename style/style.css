@@ -1,32 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 
-@font-face {
-    font-family: "silkscreen";
-    src: url("https://fonts.google.com/specimen/Silkscreen") format("woff2") ;
-    font-style: normal;
-    font-weight:bold;
+body {
+  background-color: blanchedalmond;
+  font-family: "Kaushan Script";
+  color: crimson;
+  font-size: 15px;
+  margin: 10px;
+}
+.container {
+  
+  margin: 20px;
 }
 
-
-body{
-
-    background-color: blanchedalmond;
-    font-family: "silkscreen";
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#pantalla-inicial, #pantalla-media, #pantalla-final {
     margin: 20px;
-    
-
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
-    font-size: 15px;
-    font-family:Arial, Helvetica, sans-serif;
+.title {
+  text-align: center;
+  font-size: 20px;
+  
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  }
+
+#instruciones {
+  text-align: left;
+}
+
+.boton {
+  background-color: cornflowerblue;
+  padding: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 40px;
+  border-radius: 10px;
+  }
+
+  .cartel{
+    width:200px ;
+    height: 300px;
+    border: 5px  solid black ;
     
-    
+  }
+
+#pantalla-media, #pantalla-final {
+    display: none;
 }

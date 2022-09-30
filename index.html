@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body>
-    <h1>JARL!</h1>
-    
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+
+  <body>
     <div class="container">
-        
-        <div id="pantalla-inicial">
-            <img src="" alt="">
-        
-            <div>
-                <p> Instrucciones: <br> </p>
-                <button>CAMINA</button>
-            </div>
-    
+      <div id="pantalla-inicial">
+        <div class="title">
+          <h1>JARL !</h1>
+          <h2>Paseos con arte</h2>
         </div>
 
-        <canvas>
+        <div class="panel">
+          <div id="instrucciones">
+            <p>
+              Instrucciones: <br />
+              <br>
+              Acompaña a Chiquita paseando por la Malagueta mientras cuenta
+              chistes. <br />
+              Ten cuidado con los bañistas, no tienen humor y lanzan tomates.
+              <br />
+              ¡Esquivalos!.
+            </p>
 
-        </canvas>
+            <button class="boton">CAMINA</button>
+          </div>
+          <div>
+            <img class="cartel" src="./images/lateral.jfif" alt="chiquito" />
+          </div>
+        
+        </div>
+        
+      </div>
 
-        <div id="pantalla-final">
-            <img src="" alt="">
-            <div>
-                <p></p>
-                <button>VOLVER A LA PLAYA</button>
-            </div>
-
-
+      <div id="pantalla-media">
+        <div class="title">
+          <h1>JARL !</h1>
+          <h2>Paseos con arte</h2>
         </div>
 
+        <canvas> </canvas>
+      </div>
 
+      <div id="pantalla-final">
+        <div class="title">
+          <h1>JARL !</h1>
+          <h2>Paseos con arte</h2>
+        </div>
+
+        <div class="panel">
+          <div>
+            <p>
+              Tomate un tiempo <br />
+              y vuelve
+            </p>
+            <button class="boton">VOLVER A LA PLAYA</button>
+          </div>
+
+          <div>
+            <img class="cartel" src="./images/lateral.jfif" alt="chiquito" />
+          </div>
+        </div>
+      </div>
     </div>
-    
-
-
-
 
     <script src="./javascript/main.js"></script>
     <script src="./javascript/game.js"></script>
-</body>
+  </body>
 </html>
