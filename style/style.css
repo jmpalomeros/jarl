@@ -1,0 +1,32 @@
+
+@font-face {
+    font-family: "silkscreen";
+    src: url("https://fonts.google.com/specimen/Silkscreen") format("woff2") ;
+    font-style: normal;
+    font-weight:bold;
+}
+
+
+body{
+
+    background-color: blanchedalmond;
+    font-family: "silkscreen";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    
+
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    font-size: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    
+    
+}
