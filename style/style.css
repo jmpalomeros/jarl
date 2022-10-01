@@ -8,18 +8,19 @@ body {
   margin: 10px;
 }
 .container {
-  
   margin: 20px;
 }
 
-#pantalla-inicial, #pantalla-media, #pantalla-final {
-    margin: 20px;
+#pantalla-inicial,
+#pantalla-media,
+#pantalla-final {
+  margin: 20px;
 }
 
 .title {
   text-align: center;
   font-size: 20px;
-  
+  line-height: 20px;
 }
 
 .panel {
@@ -27,34 +28,50 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  }
+}
 
 #instruciones {
   text-align: left;
 }
 
 .boton {
+  font-family: "Kaushan Script";
   background-color: cornflowerblue;
   padding: 10px;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: bold;
-  margin-top: 40px;
+  margin-top: 20px;
   border-radius: 10px;
-  
-  }
-
-.boton:active{
-    background-color: azure;
-    box-shadow: 0 5px #666;
-    transform: translateX(2px);
 }
 
-  .cartel{
-    width:200px ;
-    height: 300px;
-    border: 8px  solid black ;
-  }
+.boton:active {
+  font-family: "Kaushan Script";
+  background-color: azure;
+  box-shadow: 0 5px #666;
+  transform: translateX(2px);
+}
 
-#pantalla-media, #pantalla-final {
-    display: none;
+.cartel {
+  width: 200px;
+  height: 300px;
+  border: 8px solid black;
+}
+
+#canvas{
+    background-color: darkgoldenrod;
+    padding-top: 20px;
+        
+}
+
+#pantalla-media{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;    
+    }
+
+
+#pantalla-media,
+#pantalla-final {
+  display: none;
 }
