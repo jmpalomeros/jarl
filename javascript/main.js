@@ -3,9 +3,14 @@
 
 const pantallaInicial = document.querySelector("#pantalla-inicial")
 const starBtn = document.querySelector("#camina-btn")
+
 const pantallaMedia = document.querySelector("#pantalla-media")
 const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext("2d")
+
+
+
+
 
 
 // *STATE MANAGEMENT FUNCTIONS

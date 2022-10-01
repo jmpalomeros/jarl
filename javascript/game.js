@@ -1,50 +1,39 @@
-class Game{
+class Game {
+  //propiedades
+  constructor() {
+    this.fondo = new Image();
+    this.fondo.src = "./images/fondo.png";
 
-    //propiedades
-    constructor(){
+    this.actorObj = new Chiquito()
 
-        this.fondo = new Image()
-        this.fondo.src = "./images.playa.png"
-        //chiquito
-        //tomatina
-        //tomaton
-        //fondo
+    //tomatina
+    //tomaton
+    //fondo
+  }
 
+  //metodos
 
+  dibujarFondo = () => {
+    ctx.drawImage(this.fondo, 0, 0, canvas.width, canvas.height);
+  };
 
-    }
-
-
-
-
-
-    //metodos
-
-dibujarFondo = () =>{
-        ctx.drawImage(this.fondo, 0, 0, canvas.width , canvas.heigth)
-        }
-
-    
-    //dibjar y sacar en pantalla elementos
-    //colocacion de elementos
-    //movimientos de los elementos
-    //
- gameLoop = () => {
-
+  //dibjar y sacar en pantalla elementos
+  //colocacion de elementos
+  //movimientos de los elementos
+  //
+  gameLoop = () => {
     // 1. limpiar el canvas
-        ctx.clearRect(0,0,canvas.width,canvas.heigth);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // 2. acciones y movimientos elementos
 
     // 3. dibujar elementos
-        this.dibujarFondo()
+    this.dibujarFondo();
+    this.actorObj.dibujarActor();
+    
 
     // 4. recursion
 
-    
-        requestAnimationFrame(this.gameLoop)
-
-    }
-
-
+    requestAnimationFrame(this.gameLoop);
+  };
 }
