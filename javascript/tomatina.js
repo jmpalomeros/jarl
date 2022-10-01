@@ -15,7 +15,7 @@ class Tomatina {
 
     //metodos
 
-    dibujarMala = () => {
+    dibujarTomatina = () => {
         ctx.drawImage(this.mala,this.x, this.y, this.w, this.h )
     }
 

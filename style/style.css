@@ -59,6 +59,8 @@ body {
 
 #canvas{
     background-color: darkgoldenrod;
+    border: 5px solid  cornflowerblue;
+    border-style:double ;
             
 }
 

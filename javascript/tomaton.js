@@ -16,7 +16,7 @@ class Tomaton {
 
     //metodos
 
-    dibujarMalo = () => {
+    dibujarTomaton = () => {
         ctx.drawImage(this.mala,this.x, this.y, this.w, this.h )
     }
 
