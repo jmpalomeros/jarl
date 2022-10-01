@@ -8,6 +8,8 @@ const pantallaMedia = document.querySelector("#pantalla-media")
 const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext("2d")
 
+let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
+
 
 
 
@@ -19,7 +21,7 @@ const comenzarJuego = () => {
     pantallaInicial.style.display = "none"
     pantallaMedia.style.display = "flex"
 
-    let gameObj = new Game ()
+    gameObj = new Game ()
     gameObj.gameLoop()
 
 }
@@ -29,5 +31,29 @@ const comenzarJuego = () => {
 // *ADD EVENT LISTENERS
 
 starBtn.addEventListener("click", comenzarJuego)
+
+window.addEventListener("keydown",(event) => {
+    if(event.code === "KeyW"){
+        gameObj.actorObj.movUpActor()     
+        }
+})
+
+window.addEventListener("keydown", (event) =>{
+    if(event.code === "KeyS"){
+        gameObj.actorObj.movDownActor()
+    }
+})
+
+window.addEventListener("keydown", (event) =>{
+    if(event.code === "KeyA"){
+        gameObj.actorObj.movLActor()
+    }
+})
+
+window.addEventListener("keydown", (event) =>{
+    if(event.code === "KeyD"){
+        gameObj.actorObj.movRActor()
+    }
+})
 
 

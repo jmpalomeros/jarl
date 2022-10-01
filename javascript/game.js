@@ -26,10 +26,14 @@ class Game {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // 2. acciones y movimientos elementos
+    
+    //this.actorObj.gravedadActor();
+
 
     // 3. dibujar elementos
     this.dibujarFondo();
     this.actorObj.dibujarActor();
+    
     
 
     // 4. recursion
