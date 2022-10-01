@@ -3,7 +3,7 @@ class Game{
     //propiedades
     constructor(){
 
-        this.fondo = new Image ()
+        this.fondo = new Image()
         this.fondo.src = "./images.playa.png"
         //chiquito
         //tomatina
@@ -22,8 +22,7 @@ class Game{
 
 dibujarFondo = () =>{
         ctx.drawImage(this.fondo, 0, 0, canvas.width , canvas.heigth)
-        console.log("imagen")
-    }
+        }
 
     
     //dibjar y sacar en pantalla elementos
