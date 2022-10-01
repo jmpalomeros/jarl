@@ -5,6 +5,11 @@ class Game {
     this.fondo.src = "./images/fondo.png";
 
     this.actorObj = new Chiquito()
+    this.malaObj = new Tomatina ()
+    this.maloObj = new Tomaton ()
+
+    this.malaArr = []
+    this.maloArr = []
 
     //tomatina
     //tomaton
@@ -28,11 +33,15 @@ class Game {
     // 2. acciones y movimientos elementos
     
     //this.actorObj.gravedadActor();
+    this.malaObj.moveTomatina()
+    this.maloObj.moveTomaton ()
 
 
     // 3. dibujar elementos
     this.dibujarFondo();
     this.actorObj.dibujarActor();
+    this.malaObj.dibujarMala()
+    this.maloObj.dibujarMalo()
     
     
 

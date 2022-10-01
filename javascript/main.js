@@ -4,9 +4,13 @@
 const pantallaInicial = document.querySelector("#pantalla-inicial")
 const starBtn = document.querySelector("#camina-btn")
 
+
 const pantallaMedia = document.querySelector("#pantalla-media")
 const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext("2d")
+
+//const music = document.querySelector("#music")
+
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
 
@@ -24,13 +28,16 @@ const comenzarJuego = () => {
     gameObj = new Game ()
     gameObj.gameLoop()
 
-}
+    }
 
 
 
 // *ADD EVENT LISTENERS
 
 starBtn.addEventListener("click", comenzarJuego)
+
+//music.addEventListener("click", comenzarJuego) //!NO FUNCIONA BIEN AUDIO. QUE SALTE SOLO CON CLICK CAMINA
+
 
 window.addEventListener("keydown",(event) => {
     if(event.code === "KeyW"){
