@@ -9,8 +9,8 @@ class Tomatina {
         let randomNumYMala = Math.random() * canvas.height;
         let randomYMala = Math.floor(randomNumYMala);
         this.y = randomYMala;
-        this.w= 50;
-        this.h=50;
+        this.w= 40;
+        this.h=40;
         this.speed = 2
     
     }

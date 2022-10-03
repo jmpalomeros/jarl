@@ -65,14 +65,21 @@ body {
 }
 
 #pantalla-media{
-    display: flex;
+    display: none;
     justify-content:center;
     align-items: center;
     flex-direction: column;    
     }
 
 
-#pantalla-media,
+
 #pantalla-final {
   display: none;
+}
+
+#puntuacion{
+  display: flex;
+  font-size: 20px;
+  font-family: "Kaushan Script";
+ 
 }

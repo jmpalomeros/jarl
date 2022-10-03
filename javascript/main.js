@@ -14,11 +14,13 @@ const volverBton = document.querySelector("#volver-btn")
 //const music = document.querySelector("#music")
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
-
+//let puntuacion = document.querySelector("#puntuacion")
 
 // *STATE MANAGEMENT FUNCTIONS
 
+
 const comenzarJuego = () => {
+    
     pantallaInicial.style.display = "none"
     pantallaMedia.style.display = "flex"
     gameObj = new Game ()
@@ -27,10 +29,11 @@ const comenzarJuego = () => {
 
 const volverAlJuego = () => {
     pantallaFinal.style.display = "none"
-    canvas.style.display = "block"
+    canvas.style.display = "flex"
     comenzarJuego ()
 }
 
+// !puntuacion = gameObj.gameScore()
 
 // *ADD EVENT LISTENERS
 

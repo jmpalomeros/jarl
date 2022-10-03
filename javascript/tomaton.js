@@ -8,12 +8,10 @@ class Tomaton {
         let randomNumYMalo = Math.random() * canvas.height;
         let randomYMalo = Math.floor(randomNumYMalo);
         this.y = randomYMalo;
-        this.w= 100;
-        this.h=100;
+        this.w= 70;
+        this.h=60;
         this.speed = 4
-                
-
-
+            
     }
 
     //metodos

@@ -1,66 +1,43 @@
+class Chiquito {
+  constructor() {
+    this.actor = new Image();
+    this.actor.src = "./images/chiquito.png";
+    this.x = 20;
+    this.y = 250;
+    this.w = 80;
+    this.h = 120;
+    this.mov = 30;
+    this.upLimit = 10;
+    this.downLimit=370;
+    this.rightLimit = 710;
+    this.leftLimit = 0;
+  }
 
-class Chiquito{
+  //métodos
 
-    constructor(){
-        this.actor = new Image()
-        this.actor.src = "./images/chiquito.png"
-        this.x = 20;
-        this.y = 250;
-        this.w= 100;
-        this.h=130;
-        this.mov = 30
-        // todo this.xMovLimit = canvas.width; 
-        //this.yMovLimit = canvas.height;
-        this.rightLimit = 800;
-        this.leftLimit = 0;
-        
+  dibujarActor = () => {
+    ctx.drawImage(this.actor, this.x, this.y, this.w, this.h);
+  };
 
+  movUpActor = () => {
+    if (this.y > this.upLimit) {
+      this.y = this.y - this.mov;
     }
+  };
 
-    //métodos
-
-    dibujarActor = () => {
-        ctx.drawImage(this.actor,this.x, this.y, this.w, this.h )
+  movDownActor = () => {
+    if (this.y < this.downLimit) {
+      this.y = this.y + this.mov;
     }
-    
-    movUpActor = () => {
-        
-        this.y = this.y - this.mov
-        }
-
-        
-    
-    movDownActor = () => {
-        this.y = this.y + this.mov
+  };
+  movLActor = () => {
+    if (this.x > this.leftLimit) {
+      this.x = this.x - this.mov;
     }
-    movLActor = () => {
-        this.x = this.x - this.mov
+  };
+  movRActor = () => {
+    if (this.x < this.rightLimit) {
+      this.x = this.x + this.mov;
     }
-    movRActor = () => {
-        this.x = this.x + this.mov
-                    
-        }
-        
-    
-
-    // todo
-    /* limiteXMovActor = () => {
-        if(this.x > canvas.width -100){
-            this.xMovLimit = -100
-        }
-    } */
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
+  };
 }
