@@ -19,10 +19,6 @@ class Chiquito{
     dibujarActor = () => {
         ctx.drawImage(this.actor,this.x, this.y, this.w, this.h )
     }
-//podré quitarla y quitar la función de gameLoop
-    /*gravedadActor = () => {// le pongo gravedad si quiero que caiga en el eje Y, si quiero dejarlo fijo, lo quito
-        this.y = this.y + this.gravedad
-        }*/
     
     movUpActor = () => {
         this.y = this.y - this.mov
