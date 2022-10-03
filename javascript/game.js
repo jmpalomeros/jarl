@@ -10,10 +10,47 @@ class Game {
     this.tomatonArr = []
 
     this.frame = 0; // para crear la cadencia con la que salen malas
-
+    this.isGameOn = true
   }
 
   //metodos
+
+  colisionTomatina = () =>{
+    
+    this.tomatinaArr.forEach((eachTomatina)=>{
+      if (
+        this.actorObj.x < eachTomatina.x + eachTomatina.w &&
+        this.actorObj.x + this.actorObj.w > eachTomatina.x &&
+        this.actorObj.y < eachTomatina.y + eachTomatina.h &&
+        (this.actorObj.h - 20) + this.actorObj.y > eachTomatina.y
+      ) {
+        console.log("colision")
+        this.gameOver();
+      }} 
+      )
+  }
+
+  colisionTomaton = () =>{
+    
+    this.tomatonArr.forEach((eachTomaton)=>{
+      if (
+        (this.actorObj.x < eachTomaton.x + eachTomaton.w) &&
+        this.actorObj.x + this.actorObj.w > eachTomaton.x &&
+        this.actorObj.y < eachTomaton.y + eachTomaton.h &&
+        this.actorObj.h + this.actorObj.y > eachTomaton.y
+      ) {
+        console.log("colision")
+        this.gameOver()
+      }
+    }
+    )
+  }
+
+  gameOver = () =>{
+    this.isGameOn = false
+    canvas.style.display = "none"
+    pantallaFinal.style.display = "block"
+  }
 
   añadirTomatina = () => {
     if (this.frame % 120 === 0) {
@@ -50,8 +87,12 @@ class Game {
       eachTomaton.moveTomaton();
     })
 
-    this.añadirTomatina ()
-    this.añadirTomaton ()
+    this.añadirTomatina ();
+    this.añadirTomaton ();
+    this.colisionTomatina ();
+    this.colisionTomaton ();
+
+    // todo this.actorObj.limiteXMovActor()
     
 
     // 3. dibujar elementos
@@ -71,7 +112,9 @@ class Game {
     
 
     // 4. recursion
-
-    requestAnimationFrame(this.gameLoop);
+if (this.isGameOn === true){
+   requestAnimationFrame(this.gameLoop);
+}
+   
   };
 }
