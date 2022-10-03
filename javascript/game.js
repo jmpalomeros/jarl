@@ -11,6 +11,8 @@ class Game {
 
     this.frame = 0; // para crear la cadencia con la que salen malas
     this.isGameOn = true
+
+    this.score = 0;
   }
 
   //metodos
@@ -20,7 +22,7 @@ class Game {
     this.tomatinaArr.forEach((eachTomatina)=>{
       if (
         this.actorObj.x < eachTomatina.x + eachTomatina.w &&
-        this.actorObj.x + this.actorObj.w > eachTomatina.x &&
+        this.actorObj.x + (this.actorObj.w -20) > eachTomatina.x &&
         this.actorObj.y < eachTomatina.y + eachTomatina.h &&
         (this.actorObj.h - 20) + this.actorObj.y > eachTomatina.y
       ) {
@@ -34,10 +36,10 @@ class Game {
     
     this.tomatonArr.forEach((eachTomaton)=>{
       if (
-        (this.actorObj.x < eachTomaton.x + eachTomaton.w) &&
+        this.actorObj.x < eachTomaton.x + eachTomaton.w &&
         this.actorObj.x + this.actorObj.w > eachTomaton.x &&
         this.actorObj.y < eachTomaton.y + eachTomaton.h &&
-        this.actorObj.h + this.actorObj.y > eachTomaton.y
+        (this.actorObj.h - 30) + this.actorObj.y > eachTomaton.y
       ) {
         console.log("colision")
         this.gameOver()
@@ -60,11 +62,26 @@ class Game {
   };
 
   añadirTomaton = () => {
-    if(this.frame % 300 === 0){
+    if(this.frame % 360 === 0){
       let nuevoTomaton = new Tomaton()
       this.tomatonArr.push(nuevoTomaton)
     }
   }
+
+  gameScore = () => {
+    if(this.tomatinaArr.length !== 0 && this.tomatinaArr[0].x < -50 ){
+      this.score ++
+      this.tomatinaArr.shift()
+      console.log(this.score)
+      }
+
+    if (this.tomatonArr.length !== 0 &&  this.tomatonArr[0].x < -80){
+      this.tomatonArr.shift()
+      this.score = this.score + 2
+      console.log(this.score)
+      } 
+    }
+  
 
   dibujarFondo = () => {
     ctx.drawImage(this.fondo, 0, 0, canvas.width, canvas.height);
@@ -91,6 +108,7 @@ class Game {
     this.añadirTomaton ();
     this.colisionTomatina ();
     this.colisionTomaton ();
+    this.gameScore();
 
     // todo this.actorObj.limiteXMovActor()
     

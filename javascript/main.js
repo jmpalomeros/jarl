@@ -3,23 +3,17 @@
 
 const pantallaInicial = document.querySelector("#pantalla-inicial")
 const starBtn = document.querySelector("#camina-btn")
-const volverBton = document.querySelector("#volver-btn")
-
 
 const pantallaMedia = document.querySelector("#pantalla-media")
 const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext("2d")
 
 const pantallaFinal = document.querySelector("#pantalla-final")
+const volverBton = document.querySelector("#volver-btn")
 
 //const music = document.querySelector("#music")
 
-
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
-
-
-
-
 
 
 // *STATE MANAGEMENT FUNCTIONS
@@ -27,14 +21,14 @@ let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este f
 const comenzarJuego = () => {
     pantallaInicial.style.display = "none"
     pantallaMedia.style.display = "flex"
-
     gameObj = new Game ()
     gameObj.gameLoop()
+}
 
-    }
 const volverAlJuego = () => {
     pantallaFinal.style.display = "none"
-    pantallaInicial.style.display = "block"
+    canvas.style.display = "block"
+    comenzarJuego ()
 }
 
 
