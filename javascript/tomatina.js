@@ -5,8 +5,10 @@ class Tomatina {
 
         this.mala = new Image()
         this.mala.src = "./images/tomatina2.png"
-        this.x = 700;
-        this.y = 60;
+        this.x = canvas.width;
+        let randomNumYMala = Math.random() * canvas.height;
+        let randomYMala = Math.floor(randomNumYMala);
+        this.y = randomYMala;
         this.w= 50;
         this.h=50;
         this.speed = 2

@@ -2,10 +2,12 @@ class Tomaton {
 
     constructor(){
 
-        this.mala = new Image()
-        this.mala.src = "./images/tomaton.png"
-        this.x = 700;
-        this.y = 200;
+        this.malo = new Image();
+        this.malo.src = "./images/tomaton.png";
+        this.x = canvas.width;
+        let randomNumYMalo = Math.random() * canvas.height;
+        let randomYMalo = Math.floor(randomNumYMalo);
+        this.y = randomYMalo;
         this.w= 100;
         this.h=100;
         this.speed = 4
@@ -17,7 +19,7 @@ class Tomaton {
     //metodos
 
     dibujarTomaton = () => {
-        ctx.drawImage(this.mala,this.x, this.y, this.w, this.h )
+        ctx.drawImage(this.malo,this.x, this.y, this.w, this.h )
     }
 
     moveTomaton = () => {

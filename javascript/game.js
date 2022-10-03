@@ -23,7 +23,7 @@ class Game {
   };
 
   añadirTomaton = () => {
-    if(this.frame % 120 === 0){
+    if(this.frame % 300 === 0){
       let nuevoTomaton = new Tomaton()
       this.tomatonArr.push(nuevoTomaton)
     }
@@ -32,8 +32,6 @@ class Game {
   dibujarFondo = () => {
     ctx.drawImage(this.fondo, 0, 0, canvas.width, canvas.height);
   };
-
-  
 
   gameLoop = () => {
 
