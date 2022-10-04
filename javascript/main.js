@@ -9,12 +9,13 @@ const canvas = document.querySelector("#canvas")
 const ctx = canvas.getContext("2d")
 
 const pantallaFinal = document.querySelector("#pantalla-final")
-const volverBton = document.querySelector("#volver-btn")
+const volverBtn = document.querySelector("#volver-btn")
+const inicioBtn = document.querySelector("#inicio-btn")
 
-//const music = document.querySelector("#music")
+const music = document.querySelector("#music")
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
-//let puntuacion = document.querySelector("#puntuacion")
+//!let puntuacion = document.querySelector("#puntuacion")
 
 // *STATE MANAGEMENT FUNCTIONS
 
@@ -33,17 +34,23 @@ const volverAlJuego = () => {
     comenzarJuego ()
 }
 
+const irInicio = () => {
+    pantallaFinal.style.display = "none"
+    canvas.style.display = "flex"
+    comenzarJuego ()
+}
+
 // !puntuacion = gameObj.gameScore()
 
 // *ADD EVENT LISTENERS
 
+music.addEventListener("click", comenzarJuego) //!NO FUNCIONA BIEN AUDIO. QUE SALTE SOLO CON CLICK CAMINA
+
 starBtn.addEventListener("click", comenzarJuego)
 
-volverBton.addEventListener("click", volverAlJuego)
+volverBtn.addEventListener("click", volverAlJuego)
 
-
-//music.addEventListener("click", comenzarJuego) //!NO FUNCIONA BIEN AUDIO. QUE SALTE SOLO CON CLICK CAMINA
-
+inicioBtn.addEventListener("click", irInicio)
 
 window.addEventListener("keydown",(event) => {
     if(event.code === "KeyW"){

@@ -71,8 +71,6 @@ body {
     flex-direction: column;    
     }
 
-
-
 #pantalla-final {
   display: none;
 }
@@ -81,5 +79,4 @@ body {
   display: flex;
   font-size: 20px;
   font-family: "Kaushan Script";
- 
-}
+ }
