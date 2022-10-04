@@ -56,8 +56,7 @@ class Game {
         } else if (this.life <= 2){
         this.gameOver(); 
         }
-        
-      }
+        }
     });
   };
 
@@ -107,8 +106,12 @@ class Game {
   añadirRecompensa = () =>{
     if(this.frame % 600 === 0){
       let recompensa = new Reward ();
-      this.recompensaArr.push(recompensa);      
-    }
+      this.recompensaArr.push(recompensa);
+      } else if(this.frame % 180 === 0){
+        this.recompensaArr.forEach((eachRecompensa)=>{
+          this.recompensaArr.splice(eachRecompensa,1)
+        })
+      } 
   }
 
   gameScore = () => {
