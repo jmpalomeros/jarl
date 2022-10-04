@@ -13,7 +13,7 @@ class Game {
     this.isGameOn = true;
 
     this.score = 0;
-    this.life = 10;
+    //this.life = 10;
   }
 
   //metodos
@@ -48,12 +48,12 @@ class Game {
   }
 
   gameOver = () =>{
-    if(life === 0){
+    //if(life === 0){
       this.isGameOn = false
       canvas.style.display = "none"
       pantallaMedia.style.display = "none"
       pantallaFinal.style.display = "block" 
-    }
+    //}
     }
 
   añadirTomatina = () => {

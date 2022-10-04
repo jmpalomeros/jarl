@@ -37,7 +37,7 @@ const volverAlJuego = () => {
 const irInicio = () => {
     pantallaFinal.style.display = "none"
     canvas.style.display = "flex"
-    comenzarJuego ()
+    pantallaInicial.style.display ="block"
 }
 
 // !puntuacion = gameObj.gameScore()
