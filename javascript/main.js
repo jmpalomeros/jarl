@@ -12,11 +12,13 @@ const pantallaFinal = document.querySelector("#pantalla-final")
 const volverBtn = document.querySelector("#volver-btn")
 const inicioBtn = document.querySelector("#inicio-btn")
 
-const music = document.querySelector("#music")
+const intro = document.querySelector("#intro")
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
+
 let vidas = document.querySelector("#vidas")
 let puntuacion = document.querySelector("#puntuacion")
+
 
 // *STATE MANAGEMENT FUNCTIONS
 
@@ -40,15 +42,20 @@ const volverAlJuego = () => {
 const irInicio = () => {
     pantallaFinal.style.display = "none"
     canvas.style.display = "flex"
-    pantallaInicial.style.display ="block"
-    
+    pantallaInicial.style.display ="block"  
 }
 
-// !puntuacion = gameObj.gameScore()
 
 // *ADD EVENT LISTENERS
 
-//music.addEventListener("click", comenzarJuego) //!NO FUNCIONA BIEN AUDIO. QUE SALTE SOLO CON CLICK CAMINA
+intro.addEventListener("click",(event)=> {
+    if(event.code === starBtn){
+    let introAudio = document.createElement("audio");
+    introAudio.setAttribute("src","./audio/siete_caballos.mp3");
+    introAudio.play(intro)
+    }
+    ;
+})
 
 starBtn.addEventListener("click", comenzarJuego)
 
@@ -79,5 +86,7 @@ window.addEventListener("keydown", (event) =>{
         gameObj.actorObj.movRActor()
     }
 })
+
+//!puntuacion.innerText(gameObj.gameScore(score))
 
 

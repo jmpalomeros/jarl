@@ -5,7 +5,7 @@ class Tomaton {
         this.malo = new Image();
         this.malo.src = "./images/tomaton.png";
         this.x = canvas.width;
-        let randomNumYMalo = Math.random() * canvas.height;
+        let randomNumYMalo = Math.random() * canvas.height -60;
         let randomYMalo = Math.floor(randomNumYMalo);
         this.y = randomYMalo;
         this.w= 70;
