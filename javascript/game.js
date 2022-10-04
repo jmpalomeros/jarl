@@ -18,6 +18,14 @@ class Game {
 
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
+    this.chiste = document.querySelector("#chiste");
+
+    this.chistesArr = [
+      "Trabajas menos que el sastre de Tarzán",
+      "Estan las cosas muy mal, estamos firendo los huevos son saliva",
+      "Paparl, paparl, llévamos al circorl. No hijo, quien quiera verte que venga a casa",
+      "Ese fistro pecador, afortunado que en lugar de lineas en la mano tenía bingos"
+      ]
   }
 
   //metodos
@@ -69,7 +77,7 @@ class Game {
         this.actorObj.h + this.actorObj.y > eachRecompensa.y
       ) {
         this.recompensaArr.splice(eachRecompensa,1);
-        if(this.life < 11){
+        if(this.life <= 10){
           this.life ++;
           vidas.innerText = this.life;
         } 
@@ -120,16 +128,25 @@ class Game {
       this.score++;
       puntuacion.innerText = this.score
       this.tomatinaArr.shift();
-      console.log(this.score);
-    }
+      }
 
     if (this.tomatonArr.length !== 0 && this.tomatonArr[0].x < -80) {
       this.score = this.score + 2;
       puntuacion.innerText = this.score
       this.tomatonArr.shift();
-      console.log(this.score);
-    }
+     }
   };
+
+  cuentaChistes = () => {
+    if(this.frame % 1800 === 0){
+      let chisteRandom = Math.floor(Math.random() * this.chistesArr.length);
+      let chisteElegido = this.chistesArr[chisteRandom];
+      chisteElegido = chisteElegido.toString();
+      chiste.innerText = chisteElegido    
+
+    }
+
+  }
 
   dibujarFondo = () => {
     ctx.drawImage(this.fondo, 0, 0, canvas.width, canvas.height);
@@ -158,6 +175,7 @@ class Game {
     this.colisionTomaton();
     this.capturaRecompensa();
     this.gameScore();
+    this.cuentaChistes();
 
     // 3. dibujar elementos
 
@@ -178,6 +196,7 @@ class Game {
     
 
     // 4. recursion
+    
     if (this.isGameOn === true) {
       requestAnimationFrame(this.gameLoop);
     }
