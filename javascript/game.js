@@ -8,6 +8,7 @@ class Game {
 
     this.tomatinaArr = [];
     this.tomatonArr = [];
+    this.recompensaArr = [];
 
     this.frame = 0;
     this.isGameOn = true;
@@ -15,8 +16,8 @@ class Game {
     this.score = 0;
     this.life = 10;
 
-    this.vidas = document.querySelector("#vidas")
-    this.puntuacion = document.querySelector("#puntuacion")
+    this.vidas = document.querySelector("#vidas");
+    this.puntuacion = document.querySelector("#puntuacion");
   }
 
   //metodos
@@ -60,6 +61,24 @@ class Game {
     });
   };
 
+  capturaRecompensa = () =>{
+    this.recompensaArr.forEach((eachRecompensa) => {
+      if (
+        this.actorObj.x < eachRecompensa.x + eachRecompensa.w &&
+        this.actorObj.x + this.actorObj.w > eachRecompensa.x &&
+        this.actorObj.y < eachRecompensa.y + eachRecompensa.h &&
+        this.actorObj.h + this.actorObj.y > eachRecompensa.y
+      ) {
+        this.recompensaArr.splice(eachRecompensa,1);
+        if(this.life < 11){
+          this.life ++;
+          vidas.innerText = this.life;
+        } 
+        }
+      }
+    );
+  }
+
   gameOver = () => {
     this.isGameOn = false;
     canvas.style.display = "none";
@@ -84,6 +103,13 @@ class Game {
   noCoincidenciamalos = () => {
     this.tomatonArr[this.y] !== this.tomatinaArr[this.y];
   };
+
+  añadirRecompensa = () =>{
+    if(this.frame % 600 === 0){
+      let recompensa = new Reward ();
+      this.recompensaArr.push(recompensa);      
+    }
+  }
 
   gameScore = () => {
     if (this.tomatinaArr.length !== 0 && this.tomatinaArr[0].x < -50) {
@@ -121,8 +147,10 @@ class Game {
     this.añadirTomatina();
     this.añadirTomaton();
     this.noCoincidenciamalos();
+    this.añadirRecompensa();
     this.colisionTomatina();
     this.colisionTomaton();
+    this.capturaRecompensa();
     this.gameScore();
 
     // 3. dibujar elementos
@@ -137,6 +165,11 @@ class Game {
     this.tomatonArr.forEach((eachTomaton) => {
       eachTomaton.dibujarTomaton();
     });
+
+    this.recompensaArr.forEach((eachRecompensa)=>{
+      eachRecompensa.dibujarReward();
+    });
+    
 
     // 4. recursion
     if (this.isGameOn === true) {
