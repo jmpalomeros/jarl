@@ -143,9 +143,7 @@ class Game {
       let chisteElegido = this.chistesArr[chisteRandom];
       chisteElegido = chisteElegido.toString();
       chiste.innerText = chisteElegido    
-
     }
-
   }
 
   dibujarFondo = () => {
