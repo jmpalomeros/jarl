@@ -50,10 +50,10 @@ class Game {
         this.actorObj.h + this.actorObj.y > eachTomaton.y
       ) {
         this.tomatonArr.splice(eachTomaton,1);
-        if(this.life > 2){
-          this.life - 2;
+        if(this.life >= 2){
+          this.life= this.life - 2;
           vidas.innerText = this.life;
-        } else if (this.life <= 2){
+        } else if (this.life < 1){
         this.gameOver(); 
         }
         }
@@ -109,7 +109,8 @@ class Game {
       this.recompensaArr.push(recompensa);
       } else if(this.frame % 180 === 0){
         this.recompensaArr.forEach((eachRecompensa)=>{
-          this.recompensaArr.splice(eachRecompensa,1)
+          this.recompensaArr.splice(eachRecompensa,1);
+          this.recompensaArr.shift();
         })
       } 
   }
@@ -117,13 +118,15 @@ class Game {
   gameScore = () => {
     if (this.tomatinaArr.length !== 0 && this.tomatinaArr[0].x < -50) {
       this.score++;
+      puntuacion.innerText = this.score
       this.tomatinaArr.shift();
       console.log(this.score);
     }
 
     if (this.tomatonArr.length !== 0 && this.tomatonArr[0].x < -80) {
-      this.tomatonArr.shift();
       this.score = this.score + 2;
+      puntuacion.innerText = this.score
+      this.tomatonArr.shift();
       console.log(this.score);
     }
   };
