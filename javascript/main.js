@@ -15,7 +15,8 @@ const inicioBtn = document.querySelector("#inicio-btn")
 const music = document.querySelector("#music")
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
-//!let puntuacion = document.querySelector("#puntuacion")
+let vidas = document.querySelector("#vidas")
+let puntuacion = document.querySelector("#puntuacion")
 
 // *STATE MANAGEMENT FUNCTIONS
 
@@ -24,6 +25,8 @@ const comenzarJuego = () => {
     
     pantallaInicial.style.display = "none"
     pantallaMedia.style.display = "flex"
+    vidas.style.display = "flex"
+    puntuacion.style.display = "flex"
     gameObj = new Game ()
     gameObj.gameLoop()
 }
@@ -38,13 +41,14 @@ const irInicio = () => {
     pantallaFinal.style.display = "none"
     canvas.style.display = "flex"
     pantallaInicial.style.display ="block"
+    
 }
 
 // !puntuacion = gameObj.gameScore()
 
 // *ADD EVENT LISTENERS
 
-music.addEventListener("click", comenzarJuego) //!NO FUNCIONA BIEN AUDIO. QUE SALTE SOLO CON CLICK CAMINA
+//music.addEventListener("click", comenzarJuego) //!NO FUNCIONA BIEN AUDIO. QUE SALTE SOLO CON CLICK CAMINA
 
 starBtn.addEventListener("click", comenzarJuego)
 
