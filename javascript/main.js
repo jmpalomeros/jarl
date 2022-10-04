@@ -12,12 +12,11 @@ const pantallaFinal = document.querySelector("#pantalla-final")
 const volverBtn = document.querySelector("#volver-btn")
 const inicioBtn = document.querySelector("#inicio-btn")
 
-const intro = document.querySelector("#intro")
+//const intro = document.querySelector("#intro")
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
 
-let vidas = document.querySelector("#vidas")
-let puntuacion = document.querySelector("#puntuacion")
+
 
 
 // *STATE MANAGEMENT FUNCTIONS
@@ -48,16 +47,14 @@ const irInicio = () => {
 
 // *ADD EVENT LISTENERS
 
-intro.addEventListener("click",(event)=> {
+/*(event)=> {
     if(event.code === starBtn){
     let introAudio = document.createElement("audio");
     introAudio.setAttribute("src","./audio/siete_caballos.mp3");
-    introAudio.play(intro)
-    }
-    ;
-})
+    introAudio.play()
+    }}*/
 
-starBtn.addEventListener("click", comenzarJuego)
+starBtn.addEventListener("click",comenzarJuego)
 
 volverBtn.addEventListener("click", volverAlJuego)
 
@@ -87,6 +84,6 @@ window.addEventListener("keydown", (event) =>{
     }
 })
 
-//!puntuacion.innerText(gameObj.gameScore(score))
+//puntuacion.addEventListener(gameObj.gameScore(score))
 
 
