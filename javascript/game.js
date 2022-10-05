@@ -16,6 +16,8 @@ class Game {
     this.score = 0;
     this.life = 10;
 
+    this.audioGameOver = new Audio ("../audio/grito.mp3")
+
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
     this.chiste = document.querySelector("#chiste");
@@ -26,6 +28,8 @@ class Game {
       "Paparl, paparl, llévamos al circorl. No hijo, quien quiera verte que venga a casa",
       "Ese fistro pecador, afortunado que en lugar de lineas en la mano tenía bingos"
       ]
+
+    this.intervalo = 10;
   }
 
   //metodos
@@ -42,7 +46,7 @@ class Game {
         if (this.life > 1) {
           this.life--;
           vidas.innerText = this.life;
-        } else {
+        } else if(this.life <= 1){
           this.gameOver();
         }
       }
@@ -77,7 +81,7 @@ class Game {
         this.actorObj.h + this.actorObj.y > eachRecompensa.y
       ) {
         this.recompensaArr.splice(eachRecompensa,1);
-        if(this.life <= 10){
+        if(this.life < 10){
           this.life ++;
           vidas.innerText = this.life;
         } 
@@ -91,7 +95,10 @@ class Game {
     canvas.style.display = "none";
     pantallaMedia.style.display = "none";
     pantallaFinal.style.display = "block";
-  };
+    this.audioGameOver.play();
+    this.audioGameOver.volume = 0.3;
+    this.vidas.innerText = this.life
+    };
 
   añadirTomatina = () => {
     if (this.frame % 120 === 0) {
@@ -107,15 +114,25 @@ class Game {
     }
   };
 
-  noCoincidenciamalos = () => {
-    this.tomatonArr[this.y] !== this.tomatinaArr[this.y];
-  };
+  modoTormenta = () => {
+    if(this.frame % 1800 === 0 || this.frame % 2400 === 0){
+      this.añadirTomatina();
+      this.añadirTomaton();
+      this.gameScore();
+    }
+
+    }
+  
+  /*noCoincidenciamalos = () => {
+     (this.tomatonArr[this.y] === this.tomatinaArr[this.y])
+    
+  };*/
 
   añadirRecompensa = () =>{
-    if(this.frame % 600 === 0){
+    if(this.frame % 1200 === 0){
       let recompensa = new Reward ();
       this.recompensaArr.push(recompensa);
-      } else if(this.frame % 180 === 0){
+      } else if(this.frame % 240 === 0){
         this.recompensaArr.forEach((eachRecompensa)=>{
           this.recompensaArr.splice(eachRecompensa,1);
           this.recompensaArr.shift();
@@ -143,7 +160,7 @@ class Game {
       let chisteElegido = this.chistesArr[chisteRandom];
       chisteElegido = chisteElegido.toString();
       chiste.innerText = chisteElegido    
-    }
+    } 
   }
 
   dibujarFondo = () => {
@@ -167,13 +184,13 @@ class Game {
 
     this.añadirTomatina();
     this.añadirTomaton();
-    this.noCoincidenciamalos();
     this.añadirRecompensa();
     this.colisionTomatina();
     this.colisionTomaton();
     this.capturaRecompensa();
     this.gameScore();
     this.cuentaChistes();
+    this.modoTormenta();
 
     // 3. dibujar elementos
 

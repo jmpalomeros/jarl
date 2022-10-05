@@ -57,39 +57,36 @@ body {
   border: 8px solid black;
 }
 
-#canvas{
-    background-color: darkgoldenrod;
-    border: 5px solid  cornflowerblue;
-    border-style:double ;
-            
+#canvas {
+  background-color: darkgoldenrod;
+  border: 5px solid cornflowerblue;
+  border-style: double;
 }
 
-#pantalla-media{
-    display: none;
-    justify-content:center;
-    align-items: center;
-    flex-direction: column;    
-    }
+#pantalla-media {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 #pantalla-final {
   display: none;
 }
 
-#vidas{
-  
-  font-size: 20px;
-  font-family: "Kaushan Script";
-  width: 400px;
- }
-
-#puntuacion{
-  
+#vidas {
   font-size: 20px;
   font-family: "Kaushan Script";
   width: 400px;
 }
 
-#chistes{
-  color:darkgoldenrod;
+#puntuacion {
+  font-size: 20px;
+  font-family: "Kaushan Script";
+  width: 400px;
+}
+
+#chistes {
+  color: darkgoldenrod;
   width: 400px;
 }

@@ -20,7 +20,7 @@ class Tomaton {
         ctx.drawImage(this.malo,this.x, this.y, this.w, this.h )
     }
 
-    moveTomaton = () => {
+    moveTomaton = (speed) => {
         this.x = this.x - this.speed
     }
 

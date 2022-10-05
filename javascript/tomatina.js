@@ -22,7 +22,7 @@ class Tomatina {
            ctx.drawImage(this.mala,this.x, this.y, this.w, this.h )
         }
 
-    moveTomatina = () => {
+    moveTomatina = (speed) => {
         this.x = this.x - this.speed
     }
 

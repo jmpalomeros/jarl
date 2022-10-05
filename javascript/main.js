@@ -12,7 +12,9 @@ const pantallaFinal = document.querySelector("#pantalla-final")
 const volverBtn = document.querySelector("#volver-btn")
 const inicioBtn = document.querySelector("#inicio-btn")
 
-//const intro = document.querySelector("#intro")
+const audioIntro = new Audio("../audio/al_ataque.mp3")
+const audioFinal = new Audio("../audio/cobarde.mp3")
+const audioVolver = new Audio("../audio/fuegor.mp3")
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
 
@@ -28,20 +30,29 @@ const comenzarJuego = () => {
     pantallaMedia.style.display = "flex"
     vidas.style.display = "flex"
     puntuacion.style.display = "flex"
-    gameObj = new Game ()
-    gameObj.gameLoop()
-}
+    gameObj = new Game ();
+    gameObj.gameLoop();
+    audioIntro.play();
+    audioIntro.volume = 0.3;
+   }
 
 const volverAlJuego = () => {
     pantallaFinal.style.display = "none"
     canvas.style.display = "flex"
-    comenzarJuego ()
+    audioVolver.play();
+    audioVolver.volume = 0.3;
+    comenzarJuego ();
+    audioIntro.pause();
 }
 
 const irInicio = () => {
     pantallaFinal.style.display = "none"
     canvas.style.display = "flex"
     pantallaInicial.style.display ="block"  
+    audioFinal.play();
+    audioFinal.volume = 0.3;
+    audioIntro.pause();
+    audioVolver.pause();
 }
 
 
