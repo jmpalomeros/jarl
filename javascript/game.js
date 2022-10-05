@@ -16,8 +16,8 @@ class Game {
     this.score = 0;
     this.life = 10;
 
-    this.audioGameOver = new Audio("../audio/grito.mp3");
-    this.audioTormenta = new Audio("../audio/siete_caballos.mp3");
+    this.audioGameOver = new Audio("./audio/grito.mp3");
+    this.audioTormenta = new Audio("./audio/siete_caballos.mp3");
 
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");

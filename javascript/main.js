@@ -11,9 +11,9 @@ const pantallaFinal = document.querySelector("#pantalla-final");
 const volverBtn = document.querySelector("#volver-btn");
 const inicioBtn = document.querySelector("#inicio-btn");
 
-const audioIntro = new Audio("../audio/al_ataque.mp3");
-const audioFinal = new Audio("../audio/cobarde.mp3");
-const audioVolver = new Audio("../audio/fuegor.mp3");
+const audioIntro = new Audio("./audio/al_ataque.mp3");
+const audioFinal = new Audio("./audio/cobarde.mp3");
+const audioVolver = new Audio("./audio/fuegor.mp3");
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
 
