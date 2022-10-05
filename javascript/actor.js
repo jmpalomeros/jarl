@@ -8,7 +8,7 @@ class Chiquito {
     this.h = 120;
     this.mov = 30;
     this.upLimit = 10;
-    this.downLimit=370;
+    this.downLimit = 370;
     this.rightLimit = 710;
     this.leftLimit = 0;
   }

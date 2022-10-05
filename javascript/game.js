@@ -14,10 +14,10 @@ class Game {
     this.isGameOn = true;
 
     this.score = 0;
-    this.life = 3;
+    this.life = 10;
 
-    this.audioGameOver = new Audio ("../audio/grito.mp3")
-    this.audioTormenta = new Audio ("../audio/siete_caballos.mp3")
+    this.audioGameOver = new Audio("../audio/grito.mp3");
+    this.audioTormenta = new Audio("../audio/siete_caballos.mp3");
 
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
@@ -27,8 +27,8 @@ class Game {
       "Trabajas menos que el sastre de Tarzán",
       "Estan las cosas muy mal, estamos firendo los huevos son saliva",
       "Paparl, paparl, llévamos al circorl. No hijo, quien quiera verte que venga a casa",
-      "Ese fistro pecador, afortunado que en lugar de lineas en la mano tenía bingos"
-      ]
+      "Ese fistro pecador, afortunado que en lugar de lineas en la mano tenía bingos",
+    ];
   }
 
   //metodos
@@ -41,11 +41,11 @@ class Game {
         this.actorObj.y < eachTomatina.y + eachTomatina.h &&
         this.actorObj.h + this.actorObj.y > eachTomatina.y
       ) {
-        this.tomatinaArr.splice(eachTomatina,1);
+        this.tomatinaArr.splice(eachTomatina, 1);
         if (this.life > 1) {
           this.life--;
           vidas.innerText = this.life;
-        } else if(this.life <= 1){
+        } else if (this.life <= 1) {
           this.gameOver();
         }
       }
@@ -60,18 +60,18 @@ class Game {
         this.actorObj.y < eachTomaton.y + eachTomaton.h &&
         this.actorObj.h + this.actorObj.y > eachTomaton.y
       ) {
-        this.tomatonArr.splice(eachTomaton,1);
-        if(this.life >= 2){
-          this.life= this.life - 2;
+        this.tomatonArr.splice(eachTomaton, 1);
+        if (this.life >= 2) {
+          this.life = this.life - 2;
           vidas.innerText = this.life;
         } else {
-        this.gameOver(); 
+          this.gameOver();
         }
-        }
+      }
     });
   };
 
-  capturaRecompensa = () =>{
+  capturaRecompensa = () => {
     this.recompensaArr.forEach((eachRecompensa) => {
       if (
         this.actorObj.x < eachRecompensa.x + eachRecompensa.w &&
@@ -79,15 +79,14 @@ class Game {
         this.actorObj.y < eachRecompensa.y + eachRecompensa.h &&
         this.actorObj.h + this.actorObj.y > eachRecompensa.y
       ) {
-        this.recompensaArr.splice(eachRecompensa,1);
-        if(this.life < 10){
-          this.life ++;
+        this.recompensaArr.splice(eachRecompensa, 1);
+        if (this.life < 10) {
+          this.life++;
           vidas.innerText = this.life;
-        } 
         }
       }
-    );
-  }
+    });
+  };
 
   gameOver = () => {
     this.isGameOn = false;
@@ -97,14 +96,14 @@ class Game {
     this.audioTormenta.pause();
     this.audioGameOver.play();
     this.audioGameOver.volume = 0.3;
-    this.vidas.innerText = this.life
-    };
+    this.vidas.innerText = this.life;
+  };
 
   añadirTomatina = () => {
     if (this.frame % 120 === 0) {
       let nuevaTomatina = new Tomatina();
       this.tomatinaArr.push(nuevaTomatina);
-      }
+    }
   };
 
   añadirTomaton = () => {
@@ -115,7 +114,11 @@ class Game {
   };
 
   modoTormenta = () => {
-    if(this.frame % 1200 === 0 || this.frame % 1800 === 0 || this.frame % 2400 === 0){
+    if (
+      this.frame % 1200 === 0 ||
+      this.frame % 1800 === 0 ||
+      this.frame % 2400 === 0
+    ) {
       this.audioTormenta.play();
       this.audioTormenta.volume = 0.3;
       this.añadirTomatina();
@@ -123,10 +126,9 @@ class Game {
       this.añadirTomaton();
       this.gameScore();
     }
-    }
+  };
 
-  
-   /* dibujarChiste = () => {
+  /* dibujarChiste = () => {
       ctx.font = "30px Kaushan Script";
       if(this.frame % 60 === 0){
         let chisteRandom = Math.floor(Math.random() * this.chistesArr.length);
@@ -141,40 +143,40 @@ class Game {
     
   };*/
 
-  añadirRecompensa = () =>{
-    if(this.frame % 1200 === 0){
-      let recompensa = new Reward ();
+  añadirRecompensa = () => {
+    if (this.frame % 1200 === 0) {
+      let recompensa = new Reward();
       this.recompensaArr.push(recompensa);
-      } else if(this.frame % 240 === 0){
-        this.recompensaArr.forEach((eachRecompensa)=>{
-          this.recompensaArr.splice(eachRecompensa,1);
-          this.recompensaArr.shift();
-        })
-      } 
-  }
+    } else if (this.frame % 240 === 0) {
+      this.recompensaArr.forEach((eachRecompensa) => {
+        this.recompensaArr.splice(eachRecompensa, 1);
+        this.recompensaArr.shift();
+      });
+    }
+  };
 
   gameScore = () => {
     if (this.tomatinaArr.length !== 0 && this.tomatinaArr[0].x < -50) {
       this.score++;
-      puntuacion.innerText = this.score
+      puntuacion.innerText = this.score;
       this.tomatinaArr.shift();
-      }
+    }
 
     if (this.tomatonArr.length !== 0 && this.tomatonArr[0].x < -80) {
       this.score = this.score + 2;
-      puntuacion.innerText = this.score
+      puntuacion.innerText = this.score;
       this.tomatonArr.shift();
-     }
+    }
   };
 
   cuentaChistes = () => {
-    if(this.frame % 1800 === 0){
+    if (this.frame % 1800 === 0) {
       let chisteRandom = Math.floor(Math.random() * this.chistesArr.length);
       let chisteElegido = this.chistesArr[chisteRandom];
       chisteElegido = chisteElegido.toString();
-      chiste.innerText = chisteElegido    
-    } 
-  }
+      chiste.innerText = chisteElegido;
+    }
+  };
 
   dibujarFondo = () => {
     ctx.drawImage(this.fondo, 0, 0, canvas.width, canvas.height);
@@ -218,17 +220,16 @@ class Game {
       eachTomaton.dibujarTomaton();
     });
 
-    this.recompensaArr.forEach((eachRecompensa)=>{
+    this.recompensaArr.forEach((eachRecompensa) => {
       eachRecompensa.dibujarReward();
     });
 
     //this.dibujarChiste();
-    
 
     // 4. recursion
-    
+
     if (this.isGameOn === true) {
       requestAnimationFrame(this.gameLoop);
-      }
+    }
   };
 }
