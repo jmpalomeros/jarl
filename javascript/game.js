@@ -34,15 +34,15 @@ class Game {
     this.tomatinaArr.forEach((eachTomatina) => {
       if (
         this.actorObj.x < eachTomatina.x + eachTomatina.w &&
-        this.actorObj.x + (this.actorObj.w - 20) > eachTomatina.x &&
+        this.actorObj.x + this.actorObj.w > eachTomatina.x &&
         this.actorObj.y < eachTomatina.y + eachTomatina.h &&
-        this.actorObj.h - 20 + this.actorObj.y > eachTomatina.y
+        this.actorObj.h + this.actorObj.y > eachTomatina.y
       ) {
         this.tomatinaArr.splice(eachTomatina,1);
         if (this.life > 1) {
           this.life--;
           vidas.innerText = this.life;
-        } else if (this.life <= 1) {
+        } else {
           this.gameOver();
         }
       }
@@ -61,7 +61,7 @@ class Game {
         if(this.life >= 2){
           this.life= this.life - 2;
           vidas.innerText = this.life;
-        } else if (this.life < 1){
+        } else {
         this.gameOver(); 
         }
         }
