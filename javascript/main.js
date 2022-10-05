@@ -31,6 +31,9 @@ const comenzarJuego = () => {
     vidas.style.display = "flex"
     puntuacion.style.display = "flex"
     gameObj = new Game ();
+
+    // en esta seccion se agregarian setTimeout o setIntervals
+
     gameObj.gameLoop();
     audioIntro.play();
     audioIntro.volume = 0.3;

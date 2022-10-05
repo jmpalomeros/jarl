@@ -17,6 +17,7 @@ class Game {
     this.life = 10;
 
     this.audioGameOver = new Audio ("../audio/grito.mp3")
+    this.audioTormenta = new Audio ("../audio/siete_caballos.mp3")
 
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
@@ -115,7 +116,10 @@ class Game {
   };
 
   modoTormenta = () => {
-    if(this.frame % 1800 === 0 || this.frame % 2400 === 0){
+    if(this.frame % 1200 === 0 || this.frame % 1800 === 0 || this.frame % 2400 === 0){
+      this.audioTormenta.play();
+      this.audioTormenta.volume = 0.3;
+      this.añadirTomatina ();
       this.añadirTomatina();
       this.añadirTomaton();
       this.gameScore();
@@ -123,6 +127,16 @@ class Game {
 
     }
   
+   /* dibujarChiste = () => {
+      ctx.font = "30px Kaushan Script";
+      if(this.frame % 60 === 0){
+        let chisteRandom = Math.floor(Math.random() * this.chistesArr.length);
+        let chisteElegido = this.chistesArr[chisteRandom];
+        chisteElegido = chisteElegido.toString();
+      
+      ctx.fillText(chisteElegido, canvas.width * 0.4, 50)
+    }}*/
+
   /*noCoincidenciamalos = () => {
      (this.tomatonArr[this.y] === this.tomatinaArr[this.y])
     
@@ -208,6 +222,8 @@ class Game {
     this.recompensaArr.forEach((eachRecompensa)=>{
       eachRecompensa.dibujarReward();
     });
+
+    //this.dibujarChiste();
     
 
     // 4. recursion
