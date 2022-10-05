@@ -29,8 +29,6 @@ class Game {
       "Paparl, paparl, llévamos al circorl. No hijo, quien quiera verte que venga a casa",
       "Ese fistro pecador, afortunado que en lugar de lineas en la mano tenía bingos"
       ]
-
-    this.intervalo = 10;
   }
 
   //metodos
@@ -96,6 +94,7 @@ class Game {
     canvas.style.display = "none";
     pantallaMedia.style.display = "none";
     pantallaFinal.style.display = "block";
+    this.audioTormenta.pause();
     this.audioGameOver.play();
     this.audioGameOver.volume = 0.3;
     this.vidas.innerText = this.life
@@ -124,8 +123,12 @@ class Game {
       this.añadirTomaton();
       this.gameScore();
     }
-
     }
+
+  modoLocura = () => {
+
+
+  }
   
    /* dibujarChiste = () => {
       ctx.font = "30px Kaushan Script";
