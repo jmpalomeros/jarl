@@ -28,7 +28,20 @@ class Game {
       "Estan las cosas muy mal, estamos firendo los huevos son saliva",
       "Paparl, paparl, llévamos al circorl. No hijo, quien quiera verte que venga a casa",
       "Ese fistro pecador, afortunado que en lugar de lineas en la mano tenía bingos",
+      "Ayer escuché a mi vecina gritaar:Dame más por el chiquito. No me puedo creer que se capaz de vender a su hijo",
+      "Eres más feo que el Fary comiendo limones",
+      "Tienes más peligro que Roldan jugando al Monopoly",
+      "No te digo trigo por no llamarte Rodrigo",
+      "Te voy a hacer una guarrerida española",
+      "En vez de graduado escolar tenía una etiqueta de Anís del Mono",
+      "Eres más peligro que un tiroteo en un ascensor",
+      "Tienes más pinturas que el neceser de Marujita Diaz",
+      "Eres más falso que el flequillo del Dioni",
+      "Ere más violento que el entrenador de los Pogüer Renlle",
+      "Tienes menos curvas que una pista de aterrizaje",
+      "Uno que nació después de los dolores",
     ];
+  
   }
 
   //metodos
@@ -37,9 +50,9 @@ class Game {
     this.tomatinaArr.forEach((eachTomatina) => {
       if (
         this.actorObj.x < eachTomatina.x + eachTomatina.w &&
-        this.actorObj.x + this.actorObj.w > eachTomatina.x &&
+        this.actorObj.x + this.actorObj.w - 20 > eachTomatina.x &&
         this.actorObj.y < eachTomatina.y + eachTomatina.h &&
-        this.actorObj.h + this.actorObj.y > eachTomatina.y
+        this.actorObj.h - 20 + this.actorObj.y > eachTomatina.y
       ) {
         this.tomatinaArr.splice(eachTomatina, 1);
         if (this.life > 1) {
@@ -56,12 +69,12 @@ class Game {
     this.tomatonArr.forEach((eachTomaton) => {
       if (
         this.actorObj.x < eachTomaton.x + eachTomaton.w &&
-        this.actorObj.x + this.actorObj.w > eachTomaton.x &&
+        this.actorObj.x + this.actorObj.w -20 > eachTomaton.x &&
         this.actorObj.y < eachTomaton.y + eachTomaton.h &&
-        this.actorObj.h + this.actorObj.y > eachTomaton.y
+        this.actorObj.h -20 + this.actorObj.y > eachTomaton.y
       ) {
         this.tomatonArr.splice(eachTomaton, 1);
-        if (this.life >= 2) {
+        if (this.life > 2) {
           this.life = this.life - 2;
           vidas.innerText = this.life;
         } else {
@@ -115,33 +128,38 @@ class Game {
 
   modoTormenta = () => {
     if (
-      this.frame % 1200 === 0 ||
-      this.frame % 1800 === 0 ||
-      this.frame % 2400 === 0
-    ) {
+      this.frame % 1200 === 0 
+      ) { 
       this.audioTormenta.play();
       this.audioTormenta.volume = 0.3;
-      this.añadirTomatina();
       this.añadirTomatina();
       this.añadirTomaton();
       this.gameScore();
     }
-  };
+    if(this.frame % 1800 === 0){
+      this.audioTormenta.play();
+      this.audioTormenta.volume = 0.3;
+      this.añadirTomaton();
+      this.añadirTomaton();
+      this.gameScore();
 
-  /* dibujarChiste = () => {
-      ctx.font = "30px Kaushan Script";
-      if(this.frame % 60 === 0){
-        let chisteRandom = Math.floor(Math.random() * this.chistesArr.length);
-        let chisteElegido = this.chistesArr[chisteRandom];
-        chisteElegido = chisteElegido.toString();
+    }
+  };
+  
+  /*modoRapido = () =>{
+    if(this.frame % 6000 === 0){
       
-      ctx.fillText(chisteElegido, canvas.width * 0.4, 50)
+
     }}*/
 
-  /*noCoincidenciamalos = () => {
-     (this.tomatonArr[this.y] === this.tomatinaArr[this.y])
-    
-  };*/
+  
+
+  /*modoLocura = () => {
+    let intervalo = setInterval(this.añadirTomatina, 3000)
+
+  }*/
+
+ 
 
   añadirRecompensa = () => {
     if (this.frame % 1200 === 0) {
@@ -170,7 +188,7 @@ class Game {
   };
 
   cuentaChistes = () => {
-    if (this.frame % 1800 === 0) {
+    if (this.frame % 600 === 0) {
       let chisteRandom = Math.floor(Math.random() * this.chistesArr.length);
       let chisteElegido = this.chistesArr[chisteRandom];
       chisteElegido = chisteElegido.toString();
@@ -206,6 +224,8 @@ class Game {
     this.gameScore();
     this.cuentaChistes();
     this.modoTormenta();
+   // this.modoLocura();
+   //this.modoRapido ();
 
     // 3. dibujar elementos
 
