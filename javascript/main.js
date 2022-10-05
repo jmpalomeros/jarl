@@ -56,6 +56,7 @@ const irInicio = () => {
     audioFinal.volume = 0.3;
     audioIntro.pause();
     audioVolver.pause();
+    
 }
 
 

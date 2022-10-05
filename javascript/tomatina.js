@@ -19,7 +19,7 @@ class Tomatina {
     //metodos
 
     dibujarTomatina = () => {
-           ctx.drawImage(this.mala,this.x, this.y, this.w, this.h )
+           ctx.drawImage(this.mala,this.x, this.y, this.w, this.h)
         }
 
     moveTomatina = (speed) => {

@@ -14,7 +14,7 @@ class Game {
     this.isGameOn = true;
 
     this.score = 0;
-    this.life = 10;
+    this.life = 3;
 
     this.audioGameOver = new Audio ("../audio/grito.mp3")
     this.audioTormenta = new Audio ("../audio/siete_caballos.mp3")
@@ -104,7 +104,7 @@ class Game {
     if (this.frame % 120 === 0) {
       let nuevaTomatina = new Tomatina();
       this.tomatinaArr.push(nuevaTomatina);
-    }
+      }
   };
 
   añadirTomaton = () => {
@@ -118,17 +118,13 @@ class Game {
     if(this.frame % 1200 === 0 || this.frame % 1800 === 0 || this.frame % 2400 === 0){
       this.audioTormenta.play();
       this.audioTormenta.volume = 0.3;
-      this.añadirTomatina ();
+      this.añadirTomatina();
       this.añadirTomatina();
       this.añadirTomaton();
       this.gameScore();
     }
     }
 
-  modoLocura = () => {
-
-
-  }
   
    /* dibujarChiste = () => {
       ctx.font = "30px Kaushan Script";
@@ -233,6 +229,6 @@ class Game {
     
     if (this.isGameOn === true) {
       requestAnimationFrame(this.gameLoop);
-    }
+      }
   };
 }
