@@ -6,7 +6,7 @@ class Tomatina {
         this.mala = new Image()
         this.mala.src = "./images/tomatina2.png"
         this.x = canvas.width;
-        let randomNumYMala = Math.random() * canvas.height -40;
+        let randomNumYMala = Math.random() * (10,canvas.height -40);
         let randomYMala = Math.floor(randomNumYMala);
         this.y = randomYMala
         this.w= 40;

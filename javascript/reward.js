@@ -5,10 +5,10 @@ class Reward{
     constructor(){
         this.reward = new Image()
         this.reward.src = "./images/aplauso.png"
-        let randomNumXReward = Math.random() * canvas.width - 40;
+        let randomNumXReward = Math.random() * (10,canvas.width - 40);
         let randomXReward = Math.floor(randomNumXReward);
         this.x = randomXReward;
-        let randomNumYReward = Math.random() * canvas.height -40;
+        let randomNumYReward = Math.random() * (10,canvas.height -40);
         let randomYReward = Math.floor(randomNumYReward);
         this.y = randomYReward
         this.w= 40;
