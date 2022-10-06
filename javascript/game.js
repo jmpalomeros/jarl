@@ -19,6 +19,7 @@ class Game {
 
     this.score = 0;
     this.life = 10;
+    this.protector= 0;
 
     this.audio = new Audio("./audio/grito.mp3");
     this.audioTormenta = new Audio("./audio/siete_caballos.mp3");
@@ -29,6 +30,7 @@ class Game {
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
     this.chiste = document.querySelector("#chiste");
+    this.proteccion = document.querySelector("#protector");
 
     this.chistesArr = [
       "Trabajas menos que el sastre de Tarzán",
@@ -61,12 +63,18 @@ class Game {
         this.actorObj.h - 20 + this.actorObj.y > eachTomatina.y
       ) {
         this.tomatinaArr.splice(index, 1);
-        if (this.life > 1) {
-          this.life--;
-          vidas.innerText = this.life;
-        } else if (this.life <= 1) {
-          this.gameOver();
+        if(this.actorObj.inmortal===true){
+          this.life=this.life
         }
+        else if(this.actorObj.inmortal===false){
+          if (this.life > 1) {
+            this.life--;
+            vidas.innerText = this.life;
+          } else if (this.life <= 1) {
+            this.gameOver();
+          }
+        }
+        
       }
     });
   };
@@ -80,11 +88,16 @@ class Game {
         this.actorObj.h - 20 + this.actorObj.y > eachTomaton.y
       ) {
         this.tomatonArr.splice(index, 1);
-        if (this.life > 2) {
-          this.life = this.life - 2;
-          vidas.innerText = this.life;
-        } else {
-          this.gameOver();
+        if(this.actorObj.inmortal===true){
+          this.life=this.life
+        }
+        else if(this.actorObj.inmortal===false){
+          if (this.life > 1) {
+            this.life--;
+            vidas.innerText = this.life;
+          } else if (this.life <= 1) {
+            this.gameOver();
+          }
         }
       }
     });
@@ -119,14 +132,23 @@ class Game {
       ) {
         this.audioSombrilla.play();
         this.audioSombrilla.volume = 0.3;
-        this.recompensaArr.splice(eachParaguas, 1);
-        if (this.life < 10) {
-          this.life+=2;
-          vidas.innerText = this.life;
+        this.paraguasArr.splice(eachParaguas, 1);
+        this.protector ++;
+        proteccion.innerText = this.protector;
         }
-      }
     });
   }
+
+  inmortalidad = ()=>{
+    if(this.protector >0){
+    this.protector = this.protector - 1;
+    proteccion.innerText = this.protector;
+    this.actorObj.inmortal=true;
+    setTimeout(()=>{
+      this.actorObj.inmortal=false;
+    }, 5000) 
+    }
+    }
 
   gameOver = () => {
     this.isGameOn = false;
@@ -200,11 +222,12 @@ class Game {
   };
 
  añadirParaguas = () => {
-    if(this.frame % 1860 === 0){
+    if(this.frame % 1500 === 0){
       let paraguas = new Paraguas ()
       this.paraguasArr.push(paraguas);   
       } else if (this.frame % 300 === 0){
-        this.paraguasArr.forEach(()=> {
+        this.paraguasArr.forEach((eachParaguas)=> {
+          this.paraguasArr.splice(eachParaguas,1);
           this.paraguasArr.shift()
         })
       }

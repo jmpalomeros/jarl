@@ -18,6 +18,7 @@ const audioVolver = new Audio("./audio/fuegor.mp3");
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
 let vidas = document.querySelector("#vidas");
 let puntuacion = document.querySelector("#puntuacion");
+let proteccion = document.querySelector("#protector");
 
 // *STATE MANAGEMENT FUNCTIONS
 
@@ -48,6 +49,7 @@ const volverAlJuego = () => {
   audioIntro.pause();
   vidas.innerText = 10;
   puntuacion.innerText = 0;
+  proteccion.innerText = 0;
   
 };
 
@@ -61,6 +63,7 @@ const irInicio = () => {
   audioVolver.pause();
   vidas.innerText = 10;
   puntuacion.innerText = 0;
+  proteccion.innerText = 0;
 };
 
 // *ADD EVENT LISTENERS
@@ -94,5 +97,11 @@ window.addEventListener("keydown", (event) => {
     gameObj.actorObj.movRActor();
   }
 });
+
+window.addEventListener("keydown", (event)=> {
+  if(event.code === "KeyP"){
+    gameObj.inmortalidad();
+  }
+})
 
 

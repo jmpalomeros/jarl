@@ -11,6 +11,7 @@ class Chiquito {
     this.downLimit = 370;
     this.rightLimit = 710;
     this.leftLimit = 0;
+    this.inmortal = false;
   }
 
   //métodos
