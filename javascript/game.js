@@ -9,6 +9,7 @@ class Game {
     this.tomatinaArr = [];
     this.tomatonArr = [];
     this.recompensaArr = [];
+    this.paraguasArr = [];
 
     this.frame = 0;
     this.tomatinaFrame = 120;
@@ -175,6 +176,18 @@ class Game {
     }
   };
 
+ /* añadirParaguas = () => {
+    if(this.frame % 1920 === 0){
+      let paraguas = new Paraguas ()
+      this.paraguasArr.push(paraguas);
+      setTimeout(()=> {
+        
+      })
+    }
+  }*/
+  //intentar hacer con setTimeOut para que lo cree durante 4 segundos
+  //y lo borre despues
+
   gameScore = () => {
     if (this.tomatinaArr.length !== 0 && this.tomatinaArr[0].x < -50) {
       this.score++;
@@ -247,6 +260,10 @@ class Game {
     this.recompensaArr.forEach((eachRecompensa) => {
       eachRecompensa.dibujarReward();
     });
+
+    this.paraguasArr.forEach((eachParaguas) =>{
+      eachParaguas.dibujarParaguas();
+    })
 
     // 4. recursion
 
