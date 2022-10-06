@@ -1,7 +1,7 @@
 class Chiquito {
   constructor() {
     this.actor = new Image();
-    this.actor.src = "./images/chiquito.png";
+    this.actor.src = "./images/actor.png";
     this.x = 20;
     this.y = 250;
     this.w = 80;

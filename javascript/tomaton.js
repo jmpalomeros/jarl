@@ -6,7 +6,7 @@ class Tomaton {
     let randomNumYMalo = Math.random() * (10, canvas.height - 60);
     let randomYMalo = Math.floor(randomNumYMalo);
     this.y = randomYMalo;
-    this.w = 70;
+    this.w = 60;
     this.h = 60;
     this.speed = 4;
   }

@@ -24,6 +24,7 @@ class Game {
     this.audioTormenta = new Audio("./audio/siete_caballos.mp3");
     this.audioCuen = new Audio("./audio/cuen.mp3");
     this.audioVidaExtra = new Audio("./audio/epetekan.mp3");
+    this.audioSombrilla = new Audio ("./audio/camarerorl.mp3")
 
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
@@ -97,6 +98,8 @@ class Game {
         this.actorObj.y < eachRecompensa.y + eachRecompensa.h &&
         this.actorObj.h + this.actorObj.y > eachRecompensa.y
       ) {
+        this.audioVidaExtra.play()
+        this.audioVidaExtra.volume = 0.3;
         this.recompensaArr.splice(eachRecompensa, 1);
         if (this.life < 10) {
           this.life++;
@@ -114,9 +117,11 @@ class Game {
         this.actorObj.y < eachParaguas.y + eachParaguas.h &&
         this.actorObj.h + this.actorObj.y > eachParaguas.y
       ) {
+        this.audioSombrilla.play();
+        this.audioSombrilla.volume = 0.3;
         this.recompensaArr.splice(eachParaguas, 1);
         if (this.life < 10) {
-          this.life++;
+          this.life+=2;
           vidas.innerText = this.life;
         }
       }
@@ -131,6 +136,7 @@ class Game {
     this.audioTormenta.pause();
     this.audioCuen.pause();
     this.audioVidaExtra.pause();
+    this.audioSombrilla.pause();
     this.audioGameOver.play();
     this.audioGameOver.volume = 0.3;
     this.vidas.innerText = this.life;
@@ -183,8 +189,6 @@ class Game {
 
   añadirRecompensa = () => {
     if (this.frame % 1200 === 0) {
-      this.audioVidaExtra.play()
-      this.audioVidaExtra.volume = 0.3;
       let recompensa = new Reward();
       this.recompensaArr.push(recompensa);
     } else if (this.frame % 240 === 0) {
@@ -199,9 +203,7 @@ class Game {
     if(this.frame % 1860 === 0){
       let paraguas = new Paraguas ()
       this.paraguasArr.push(paraguas);   
-      } //else if(this.frame % 300 === 0){}
-
-      else if (this.frame % 240 === 0){
+      } else if (this.frame % 240 === 0){
         this.paraguasArr.forEach(()=> {
           this.paraguasArr.shift()
         })
@@ -263,6 +265,7 @@ class Game {
     this.modoDuplicar();
     this.modoAluvion();
     this.añadirParaguas();
+    this.capturarParaguas();
     
 
     // 3. dibujar elementos
