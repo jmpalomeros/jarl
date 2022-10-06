@@ -20,7 +20,7 @@ class Game {
     this.score = 0;
     this.life = 10;
 
-    this.audioGameOver = new Audio("./audio/grito.mp3");
+    this.audio = new Audio("./audio/grito.mp3");
     this.audioTormenta = new Audio("./audio/siete_caballos.mp3");
     this.audioCuen = new Audio("./audio/cuen.mp3");
     this.audioVidaExtra = new Audio("./audio/epetekan.mp3");
@@ -121,8 +121,6 @@ class Game {
         }
       }
     });
-
-
   }
 
   gameOver = () => {
@@ -136,7 +134,7 @@ class Game {
     this.audioGameOver.play();
     this.audioGameOver.volume = 0.3;
     this.vidas.innerText = this.life;
-  };
+    };
 
   añadirTomatina = () => {
     if (this.frame % this.tomatinaFrame === 0) {
@@ -197,10 +195,8 @@ class Game {
     }
   };
 
-  
-
  añadirParaguas = () => {
-    if(this.frame % 120 === 0){
+    if(this.frame % 1860 === 0){
       let paraguas = new Paraguas ()
       this.paraguasArr.push(paraguas);   
       } //else if(this.frame % 300 === 0){}

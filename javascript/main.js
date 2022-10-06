@@ -16,6 +16,8 @@ const audioFinal = new Audio("./audio/cobarde.mp3");
 const audioVolver = new Audio("./audio/fuegor.mp3");
 
 let gameObj; //sin contenido para que cuando acceda a pantalla inicial no este funcionando
+let vidas = document.querySelector("#vidas");
+let puntuacion = document.querySelector("#puntuacion");
 
 // *STATE MANAGEMENT FUNCTIONS
 
@@ -44,6 +46,9 @@ const volverAlJuego = () => {
   audioVolver.volume = 0.3;
   comenzarJuego();
   audioIntro.pause();
+  vidas.innerText = 10;
+  puntuacion.innerText = 0;
+  
 };
 
 const irInicio = () => {
@@ -54,6 +59,8 @@ const irInicio = () => {
   audioFinal.volume = 0.3;
   audioIntro.pause();
   audioVolver.pause();
+  vidas.innerText = 10;
+  puntuacion.innerText = 0;
 };
 
 // *ADD EVENT LISTENERS
