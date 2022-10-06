@@ -25,10 +25,10 @@ const comenzarJuego = () => {
   vidas.style.display = "flex";
   puntuacion.style.display = "flex";
   gameObj = new Game();
-
+  gameObj.modoLocura ();  
   // en esta seccion se agregarian setTimeout o setIntervals
-
   gameObj.gameLoop();
+  console.log("hola")
   audioIntro.play();
   audioIntro.volume = 0.3;
 };

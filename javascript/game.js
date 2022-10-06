@@ -47,14 +47,14 @@ class Game {
   //metodos
 
   colisionTomatina = () => {
-    this.tomatinaArr.forEach((eachTomatina) => {
+    this.tomatinaArr.forEach((eachTomatina, index) => {
       if (
         this.actorObj.x < eachTomatina.x + eachTomatina.w &&
         this.actorObj.x + this.actorObj.w - 20 > eachTomatina.x &&
         this.actorObj.y < eachTomatina.y + eachTomatina.h &&
         this.actorObj.h - 20 + this.actorObj.y > eachTomatina.y
       ) {
-        this.tomatinaArr.splice(eachTomatina, 1);
+        this.tomatinaArr.splice(index, 1);
         if (this.life > 1) {
           this.life--;
           vidas.innerText = this.life;
@@ -66,14 +66,14 @@ class Game {
   };
 
   colisionTomaton = () => {
-    this.tomatonArr.forEach((eachTomaton) => {
+    this.tomatonArr.forEach((eachTomaton, index) => {
       if (
         this.actorObj.x < eachTomaton.x + eachTomaton.w &&
         this.actorObj.x + this.actorObj.w -20 > eachTomaton.x &&
         this.actorObj.y < eachTomaton.y + eachTomaton.h &&
         this.actorObj.h -20 + this.actorObj.y > eachTomaton.y
       ) {
-        this.tomatonArr.splice(eachTomaton, 1);
+        this.tomatonArr.splice(index, 1);
         if (this.life > 2) {
           this.life = this.life - 2;
           vidas.innerText = this.life;
@@ -154,9 +154,30 @@ class Game {
 
   
 
-  /*modoLocura = () => {
-    let intervalo = setInterval(this.añadirTomatina, 3000)
+  modoLocura = () => {
+    let intervalo = setInterval(() =>{
+      let nuevaTomatina = new Tomatina();
+      this.tomatinaArr.push(nuevaTomatina)
+      },6000)
+ 
+    }
+    
+    // setInterval
 
+/*//  el id de el intervalo (ref)
+//   |
+// let intervalId = setInterval( () => {
+//   console.log("ejecutando para siempre")
+// }, 1500 )
+
+
+// clearInterval => detener un intervalo o timeout pasando su id
+
+// deten el intervalo dentro de 5 segundos
+// setTimeout( () => {
+//   console.log("deteniendo el intervalo")
+//   clearInterval(intervalId)
+// }, 5000 )
   }*/
 
  
@@ -224,8 +245,7 @@ class Game {
     this.gameScore();
     this.cuentaChistes();
     this.modoTormenta();
-   // this.modoLocura();
-   //this.modoRapido ();
+       //this.modoRapido ();
 
     // 3. dibujar elementos
 
