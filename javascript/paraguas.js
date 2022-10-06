@@ -1,0 +1,11 @@
+
+class Paraguas{
+
+    constructor() {
+        
+    }
+
+    //metodos
+
+
+}

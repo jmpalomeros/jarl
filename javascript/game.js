@@ -11,6 +11,9 @@ class Game {
     this.recompensaArr = [];
 
     this.frame = 0;
+    this.tomatinaFrame = 120;
+    this.tomatonFrame = 300;
+
     this.isGameOn = true;
 
     this.score = 0;
@@ -18,6 +21,7 @@ class Game {
 
     this.audioGameOver = new Audio("./audio/grito.mp3");
     this.audioTormenta = new Audio("./audio/siete_caballos.mp3");
+    this.audioCuen = new Audio("./audio/cuen.mp3");
 
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
@@ -41,7 +45,6 @@ class Game {
       "Tienes menos curvas que una pista de aterrizaje",
       "Uno que nació después de los dolores",
     ];
-  
   }
 
   //metodos
@@ -69,9 +72,9 @@ class Game {
     this.tomatonArr.forEach((eachTomaton, index) => {
       if (
         this.actorObj.x < eachTomaton.x + eachTomaton.w &&
-        this.actorObj.x + this.actorObj.w -20 > eachTomaton.x &&
+        this.actorObj.x + this.actorObj.w - 20 > eachTomaton.x &&
         this.actorObj.y < eachTomaton.y + eachTomaton.h &&
-        this.actorObj.h -20 + this.actorObj.y > eachTomaton.y
+        this.actorObj.h - 20 + this.actorObj.y > eachTomaton.y
       ) {
         this.tomatonArr.splice(index, 1);
         if (this.life > 2) {
@@ -107,80 +110,58 @@ class Game {
     pantallaMedia.style.display = "none";
     pantallaFinal.style.display = "block";
     this.audioTormenta.pause();
+    this.audioCuen.pause();
     this.audioGameOver.play();
     this.audioGameOver.volume = 0.3;
     this.vidas.innerText = this.life;
   };
 
   añadirTomatina = () => {
-    if (this.frame % 120 === 0) {
+    if (this.frame % this.tomatinaFrame === 0) {
       let nuevaTomatina = new Tomatina();
       this.tomatinaArr.push(nuevaTomatina);
     }
   };
 
   añadirTomaton = () => {
-    if (this.frame % 360 === 0) {
+    if (this.frame % this.tomatonFrame === 0) {
       let nuevoTomaton = new Tomaton();
       this.tomatonArr.push(nuevoTomaton);
     }
   };
 
-  modoTormenta = () => {
-    if (
-      this.frame % 1200 === 0 
-      ) { 
+  modoDuplicar = () => {
+    if (this.frame % 600 === 0) {
       this.audioTormenta.play();
       this.audioTormenta.volume = 0.3;
-      this.añadirTomatina();
-      this.añadirTomaton();
-      this.gameScore();
-    }
-    if(this.frame % 1800 === 0){
-      this.audioTormenta.play();
-      this.audioTormenta.volume = 0.3;
-      this.añadirTomaton();
-      this.añadirTomaton();
-      this.gameScore();
-
+      let nuevaTomatina = new Tomatina();
+      this.tomatinaArr.push(nuevaTomatina);
+      let nuevoTomaton = new Tomaton();
+      this.tomatonArr.push(nuevoTomaton);
     }
   };
-  
-  /*modoRapido = () =>{
-    if(this.frame % 6000 === 0){
-      
 
-    }}*/
-
-  
-
-  modoLocura = () => {
-    let intervalo = setInterval(() =>{
+  modoMasUno = () => {
+    let intervalo = setInterval(() => {
       let nuevaTomatina = new Tomatina();
-      this.tomatinaArr.push(nuevaTomatina)
-      },6000)
- 
+      this.tomatinaArr.push(nuevaTomatina);
+      let nuevoTomaton = new Tomaton();
+      this.tomatonArr.push(nuevoTomaton)
+    }, 3000);
+  };
+
+  modoAluvion = () => {
+    if (this.frame % 2100 === 0) {
+      this.audioCuen.play();
+      this.audioCuen.volume = 0.3;
+      this.tomatinaFrame = 20;
+      setTimeout(() => {
+        this.tomatinaFrame = 120;
+      }, 2000)
     }
-    
-    // setInterval
-
-/*//  el id de el intervalo (ref)
-//   |
-// let intervalId = setInterval( () => {
-//   console.log("ejecutando para siempre")
-// }, 1500 )
-
-
-// clearInterval => detener un intervalo o timeout pasando su id
-
-// deten el intervalo dentro de 5 segundos
-// setTimeout( () => {
-//   console.log("deteniendo el intervalo")
-//   clearInterval(intervalId)
-// }, 5000 )
-  }*/
-
- 
+   // if (this.frame % 660 === 0) {
+     // this.tomatinaFrame = 120;}
+  };
 
   añadirRecompensa = () => {
     if (this.frame % 1200 === 0) {
@@ -225,9 +206,11 @@ class Game {
     this.frame = this.frame + 1; //para sacar a las malas segun frames
 
     // 1. limpiar el canvas
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // 2. acciones y movimientos elementos
+
     this.tomatinaArr.forEach((eachTomatina) => {
       eachTomatina.moveTomatina();
     });
@@ -244,8 +227,9 @@ class Game {
     this.capturaRecompensa();
     this.gameScore();
     this.cuentaChistes();
-    this.modoTormenta();
-       //this.modoRapido ();
+    this.modoDuplicar();
+    this.modoAluvion();
+    
 
     // 3. dibujar elementos
 
@@ -263,8 +247,6 @@ class Game {
     this.recompensaArr.forEach((eachRecompensa) => {
       eachRecompensa.dibujarReward();
     });
-
-    //this.dibujarChiste();
 
     // 4. recursion
 

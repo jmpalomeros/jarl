@@ -24,11 +24,13 @@ const comenzarJuego = () => {
   pantallaMedia.style.display = "flex";
   vidas.style.display = "flex";
   puntuacion.style.display = "flex";
+  
   gameObj = new Game();
-  gameObj.modoLocura ();  
+  gameObj.modoMasUno();
+  //gameObj.modoPararAluvion();
   // en esta seccion se agregarian setTimeout o setIntervals
   gameObj.gameLoop();
-  console.log("hola")
+
   audioIntro.play();
   audioIntro.volume = 0.3;
 };
@@ -53,13 +55,6 @@ const irInicio = () => {
 };
 
 // *ADD EVENT LISTENERS
-
-/*(event)=> {
-    if(event.code === starBtn){
-    let introAudio = document.createElement("audio");
-    introAudio.setAttribute("src","./audio/siete_caballos.mp3");
-    introAudio.play()
-    }}*/
 
 starBtn.addEventListener("click", comenzarJuego);
 
@@ -91,4 +86,4 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-//puntuacion.addEventListener(gameObj.gameScore(score))
+
