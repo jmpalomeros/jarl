@@ -191,7 +191,7 @@ class Game {
     if (this.frame % 1200 === 0) {
       let recompensa = new Reward();
       this.recompensaArr.push(recompensa);
-    } else if (this.frame % 240 === 0) {
+    } else if (this.frame % 300 === 0) {
       this.recompensaArr.forEach((eachRecompensa) => {
         this.recompensaArr.splice(eachRecompensa, 1);
         this.recompensaArr.shift();
@@ -203,7 +203,7 @@ class Game {
     if(this.frame % 1860 === 0){
       let paraguas = new Paraguas ()
       this.paraguasArr.push(paraguas);   
-      } else if (this.frame % 240 === 0){
+      } else if (this.frame % 300 === 0){
         this.paraguasArr.forEach(()=> {
           this.paraguasArr.shift()
         })
