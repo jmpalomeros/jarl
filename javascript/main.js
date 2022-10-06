@@ -26,10 +26,12 @@ const comenzarJuego = () => {
   puntuacion.style.display = "flex";
   
   gameObj = new Game();
+  
   gameObj.modoMasUno();
-  //gameObj.modoPararAluvion();
+  
   // en esta seccion se agregarian setTimeout o setIntervals
   gameObj.gameLoop();
+  
 
   audioIntro.play();
   audioIntro.volume = 0.3;

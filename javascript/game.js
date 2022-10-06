@@ -23,6 +23,7 @@ class Game {
     this.audioGameOver = new Audio("./audio/grito.mp3");
     this.audioTormenta = new Audio("./audio/siete_caballos.mp3");
     this.audioCuen = new Audio("./audio/cuen.mp3");
+    this.audioVidaExtra = new Audio("./audio/epetekan.mp3");
 
     this.vidas = document.querySelector("#vidas");
     this.puntuacion = document.querySelector("#puntuacion");
@@ -105,6 +106,25 @@ class Game {
     });
   };
 
+  capturarParaguas = () =>{
+    this.paraguasArr.forEach((eachParaguas) => {
+      if (
+        this.actorObj.x < eachParaguas.x + eachParaguas.w &&
+        this.actorObj.x + this.actorObj.w > eachParaguas.x &&
+        this.actorObj.y < eachParaguas.y + eachParaguas.h &&
+        this.actorObj.h + this.actorObj.y > eachParaguas.y
+      ) {
+        this.recompensaArr.splice(eachParaguas, 1);
+        if (this.life < 10) {
+          this.life++;
+          vidas.innerText = this.life;
+        }
+      }
+    });
+
+
+  }
+
   gameOver = () => {
     this.isGameOn = false;
     canvas.style.display = "none";
@@ -112,6 +132,7 @@ class Game {
     pantallaFinal.style.display = "block";
     this.audioTormenta.pause();
     this.audioCuen.pause();
+    this.audioVidaExtra.pause();
     this.audioGameOver.play();
     this.audioGameOver.volume = 0.3;
     this.vidas.innerText = this.life;
@@ -143,7 +164,7 @@ class Game {
   };
 
   modoMasUno = () => {
-    let intervalo = setInterval(() => {
+   setInterval(() => {
       let nuevaTomatina = new Tomatina();
       this.tomatinaArr.push(nuevaTomatina);
       let nuevoTomaton = new Tomaton();
@@ -160,12 +181,12 @@ class Game {
         this.tomatinaFrame = 120;
       }, 2000)
     }
-   // if (this.frame % 660 === 0) {
-     // this.tomatinaFrame = 120;}
-  };
+    };
 
   añadirRecompensa = () => {
     if (this.frame % 1200 === 0) {
+      this.audioVidaExtra.play()
+      this.audioVidaExtra.volume = 0.3;
       let recompensa = new Reward();
       this.recompensaArr.push(recompensa);
     } else if (this.frame % 240 === 0) {
@@ -176,18 +197,21 @@ class Game {
     }
   };
 
- /* añadirParaguas = () => {
-    if(this.frame % 1920 === 0){
-      let paraguas = new Paraguas ()
-      this.paraguasArr.push(paraguas);
-      setTimeout(()=> {
-        
-      })
-    }
-  }*/
-  //intentar hacer con setTimeOut para que lo cree durante 4 segundos
-  //y lo borre despues
+  
 
+ añadirParaguas = () => {
+    if(this.frame % 120 === 0){
+      let paraguas = new Paraguas ()
+      this.paraguasArr.push(paraguas);   
+      } //else if(this.frame % 300 === 0){}
+
+      else if (this.frame % 240 === 0){
+        this.paraguasArr.forEach(()=> {
+          this.paraguasArr.shift()
+        })
+      }
+    }
+  
   gameScore = () => {
     if (this.tomatinaArr.length !== 0 && this.tomatinaArr[0].x < -50) {
       this.score++;
@@ -242,6 +266,7 @@ class Game {
     this.cuentaChistes();
     this.modoDuplicar();
     this.modoAluvion();
+    this.añadirParaguas();
     
 
     // 3. dibujar elementos
