@@ -93,7 +93,7 @@ class Game {
         }
         else if(this.actorObj.inmortal===false){
           if (this.life > 1) {
-            this.life--;
+            this.life= this.life - 2;
             vidas.innerText = this.life;
           } else if (this.life <= 1) {
             this.gameOver();
