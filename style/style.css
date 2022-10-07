@@ -90,10 +90,17 @@ body {
 }
 
 #protector{
-  font-size: 20px;
+  font-size: 15px;
   font-family: "Kaushan Script";
   width: 400px;
   }
+
+#sombrilla{
+  
+  font-size: 20px;
+  font-family: "Kaushan Script";
+  width: 400px;
+}
 
 #chistes {
   color: darkgoldenrod;

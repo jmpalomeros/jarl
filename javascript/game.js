@@ -21,7 +21,7 @@ class Game {
     this.life = 10;
     this.protector= 0;
 
-    this.audio = new Audio("./audio/grito.mp3");
+    this.audioGameOver = new Audio("./audio/grito.mp3");
     this.audioTormenta = new Audio("./audio/siete_caballos.mp3");
     this.audioCuen = new Audio("./audio/cuen.mp3");
     this.audioVidaExtra = new Audio("./audio/epetekan.mp3");
