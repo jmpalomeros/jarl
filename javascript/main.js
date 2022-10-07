@@ -35,16 +35,15 @@ const comenzarJuego = () => {
   // en esta seccion se agregarian setTimeout o setIntervals
   gameObj.gameLoop();
   
-
+  audioIntro.volume = 0.05;
   audioIntro.play();
-  audioIntro.volume = 0.3;
-};
+  };
 
 const volverAlJuego = () => {
   pantallaFinal.style.display = "none";
   canvas.style.display = "flex";
+  audioVolver.volume = 0.05;
   audioVolver.play();
-  audioVolver.volume = 0.3;
   comenzarJuego();
   audioIntro.pause();
   vidas.innerText = 10;
@@ -57,8 +56,8 @@ const irInicio = () => {
   pantallaFinal.style.display = "none";
   canvas.style.display = "flex";
   pantallaInicial.style.display = "block";
+  audioFinal.volume = 0.05;
   audioFinal.play();
-  audioFinal.volume = 0.3;
   audioIntro.pause();
   audioVolver.pause();
   vidas.innerText = 10;

@@ -111,8 +111,8 @@ class Game {
         this.actorObj.y < eachRecompensa.y + eachRecompensa.h &&
         this.actorObj.h + this.actorObj.y > eachRecompensa.y
       ) {
+        this.audioVidaExtra.volume = 0.05;
         this.audioVidaExtra.play()
-        this.audioVidaExtra.volume = 0.3;
         this.recompensaArr.splice(eachRecompensa, 1);
         if (this.life < 10) {
           this.life++;
@@ -130,9 +130,9 @@ class Game {
         this.actorObj.y < eachParaguas.y + eachParaguas.h &&
         this.actorObj.h + this.actorObj.y > eachParaguas.y
       ) {
+        this.audioSombrilla.volume = 0.05;
         this.audioSombrilla.play();
-        this.audioSombrilla.volume = 0.3;
-        this.paraguasArr.splice(eachParaguas, 1);
+                this.paraguasArr.splice(eachParaguas, 1);
         this.protector ++;
         proteccion.innerText = this.protector;
         }
@@ -180,8 +180,8 @@ class Game {
 
   modoDuplicar = () => {
     if (this.frame % 600 === 0) {
+      this.audioTormenta.volume = 0.05;
       this.audioTormenta.play();
-      this.audioTormenta.volume = 0.3;
       let nuevaTomatina = new Tomatina();
       this.tomatinaArr.push(nuevaTomatina);
       let nuevoTomaton = new Tomaton();
@@ -200,8 +200,8 @@ class Game {
 
   modoAluvion = () => {
     if (this.frame % 2100 === 0) {
+      this.audioCuen.volume = 0.05;
       this.audioCuen.play();
-      this.audioCuen.volume = 0.3;
       this.tomatinaFrame = 20;
       setTimeout(() => {
         this.tomatinaFrame = 120;
